@@ -16,12 +16,14 @@ import schedule.usecase.CreateScheduleUseCase
 import schedule.usecase.GetScheduleUseCase
 import schedule.usecase.UpdateScheduleUseCase
 import schedule.user.reader.UserReader
+import schedule.user.service.UserValidator
 import java.time.LocalDateTime
 
 @Service
 class ScheduleApplicationService(
     private val scheduleValidator: ScheduleValidator,
     private val roomValidator: RoomValidator,
+    private val userValidator: UserValidator,
     private val scheduleWriter: ScheduleWriter,
     private val scheduleReader: ScheduleReader,
     private val roomReader: RoomReader,
@@ -107,5 +109,6 @@ class ScheduleApplicationService(
 
         scheduleValidator.validateCreateSchedule(startTime, endTime, roomId, participants)
         roomValidator.validateReserveRoom(roomId, participants.size)
+        userValidator.validateUser(participants)
     }
 }

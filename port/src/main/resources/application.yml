@@ -1,6 +1,9 @@
 server:
   port: 8080
 
+file:
+  encoding: UTF-8
+
 spring:
   # H2 Database 설정
   datasource:

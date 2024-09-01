@@ -1,28 +1,21 @@
 package schedule.input.controller.schedule.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.databind.PropertyNamingStrategies
+import com.fasterxml.jackson.databind.annotation.JsonNaming
 import schedule.extension.toTimeFormat
-import schedule.model.UpdateScheduleCommand
 import schedule.model.UpdateScheduleResult
-import java.time.LocalDateTime
 
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
 data class UpdateScheduleResponse(
-    @JsonProperty("id")
     val id: Long,
-
-    @JsonProperty("name")
     val name: String,
-
     @JsonProperty("start_time")
     val startTime: String,
-
     @JsonProperty("end_time")
     val endTime: String,
-
     @JsonProperty("room_id")
     val roomId: Long,
-
-    @JsonProperty("participants")
     val participants: List<Long>
 ) {
 

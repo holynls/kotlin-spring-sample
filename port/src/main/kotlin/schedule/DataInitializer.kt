@@ -19,12 +19,20 @@ class DataInitializer(
     private val roomCapacities = listOf(3, 5, 10)
 
     override fun run(args: ApplicationArguments?) {
-        val rooms = List(3) {
+        val rooms = listOf(
             Room(
-                name = faker.name.lastName(),
-                capacity = roomCapacities.random()
-            )
-        }
+                name = "Room 1",
+                capacity = 3,
+            ),
+            Room(
+                name = "Room 2",
+                capacity = 5,
+            ),
+            Room(
+                name = "Room 3",
+                capacity = 10,
+            ),
+        )
 
         roomWriter.createRooms(rooms)
 
