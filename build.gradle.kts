@@ -16,7 +16,7 @@ tasks {
 }
 
 tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
-    mainClass.set("org.kwan.assignment.Application")
+    mainClass.set("schedule.Application")
 }
 
 allprojects {

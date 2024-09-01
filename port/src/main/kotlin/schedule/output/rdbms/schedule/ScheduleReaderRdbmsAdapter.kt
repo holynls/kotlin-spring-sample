@@ -37,12 +37,22 @@ class ScheduleReaderRdbmsAdapter(
         )
     }
 
-    override fun isScheduleAvailable(roomId: Long, startTime: LocalDateTime, endTime: LocalDateTime): Boolean {
-        val count = from(schedule)
+    override fun isScheduleAvailable(
+        roomId: Long,
+        startTime: LocalDateTime,
+        endTime: LocalDateTime,
+        scheduleId: Long?
+    ): Boolean {
+        val query = from(schedule)
             .where(schedule.roomId.eq(roomId)
                 .and(schedule.startTime.lt(endTime))
                 .and(schedule.endTime.gt(startTime)))
-            .fetchCount()
+
+        if (scheduleId != null) {
+            query.where(schedule.id.ne(scheduleId))
+        }
+
+        val count = query.fetchCount()
 
         return count == 0L;
     }
@@ -50,16 +60,22 @@ class ScheduleReaderRdbmsAdapter(
     override fun isParticipantAlreadyReserved(
         participantIds: List<Long>,
         startTime: LocalDateTime,
-        endTime: LocalDateTime
+        endTime: LocalDateTime,
+        scheduleId: Long?,
     ): Boolean {
         val participant = QScheduleParticipantEntity.scheduleParticipantEntity
 
-        val count = from(schedule)
+        val query = from(schedule)
             .join(participant).on(schedule.id.eq(participant.scheduleId))
             .where(participant.userId.`in`(participantIds)
                 .and(schedule.startTime.lt(endTime))
                 .and(schedule.endTime.gt(startTime)))
-            .fetchCount()
+
+        if (scheduleId != null) {
+            query.where(schedule.id.ne(scheduleId))
+        }
+
+        val count = query.fetchCount()
 
         return count > 0L;
     }

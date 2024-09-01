@@ -71,10 +71,7 @@ class ScheduleApplicationService(
         val schedule = scheduleReader.findScheduleByIdOrNull(id)
             ?: throw ResourceNotFoundException("해당 ID의 예약이 존재하지 않습니다. id: $id")
 
-        // transacional을 사용하면 update를 위한 delete와 insert가 같은 트랜잭션으로 묶이기 때문에
-        scheduleWriter.delete(schedule)
-
-        validateSchedule(startTime, endTime, roomId, participants)
+        validateSchedule(startTime, endTime, roomId, participants, id)
 
         val scheduleToBeUpdate = command.toSchedule()
 
@@ -88,6 +85,7 @@ class ScheduleApplicationService(
         endTime: LocalDateTime,
         roomId: Long,
         participants: List<Long>,
+        scheduleId: Long? = null
     ) {
 
         when {
@@ -107,7 +105,7 @@ class ScheduleApplicationService(
             }
         }
 
-        scheduleValidator.validateCreateSchedule(startTime, endTime, roomId, participants)
+        scheduleValidator.validateCreateSchedule(startTime, endTime, roomId, participants, scheduleId)
         roomValidator.validateReserveRoom(roomId, participants.size)
         userValidator.validateUser(participants)
     }

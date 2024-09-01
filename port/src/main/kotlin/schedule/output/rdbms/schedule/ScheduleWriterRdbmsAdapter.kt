@@ -19,6 +19,8 @@ class ScheduleWriterRdbmsAdapter(
 
         val scheduleEntity = scheduleRepository.save(scheduleToBeSave)
 
+        scheduleParticipantRepository.deleteAllByScheduleId(scheduleEntity.id)
+
         val participantsToBeSave = schedule.participants.map {
             ScheduleParticipantEntity.of(it, scheduleEntity.id)
         }
