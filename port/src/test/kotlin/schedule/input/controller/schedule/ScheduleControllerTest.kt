@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import schedule.input.controller.schedule.request.CreateScheduleRequest
 import schedule.input.controller.schedule.request.UpdateScheduleRequest
 import schedule.input.controller.schedule.response.CreateScheduleResponse
+import schedule.input.controller.schedule.response.GetScheduleResponse
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -196,8 +197,15 @@ class ScheduleControllerTest(
 
             mockMvc.perform(get("/schedules/1"))
                 .andExpect(status().isOk)
-                // 현재 실행시마다 유저와 룸에 랜덤한 데이터가 들어가므로 리턴값 비교는 하지 않습니다.
-                //.andExpect(content().json("""{id:1}"")
+                .andDo {
+                    val result: GetScheduleResponse =
+                        objectMapper.readValue(it.response.contentAsString, GetScheduleResponse::class.java)
+                    assert(result.id == 1L)
+                    assert(result.room.id == 1L)
+                    assert(result.startTime == "2099-12-01T10:00:00")
+                    assert(result.endTime == "2099-12-01T11:00:00")
+                    assert(result.participants.map { it.id }.containsAll(listOf(1L, 2L, 3L)))
+                }
         }
     }
 
