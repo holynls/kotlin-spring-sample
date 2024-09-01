@@ -11,7 +11,7 @@ data class UpdateScheduleRequest(
     val startTime: String,
     @JsonProperty("end_time")
     val endTime: String,
-    @JsonProperty("room_id")
+    @JsonProperty("room_id", required = true)
     val roomId: Long,
     val participants: List<Long>
 ) {

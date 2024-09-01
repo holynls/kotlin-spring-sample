@@ -3,6 +3,7 @@ package schedule.input.controller.schedule
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import schedule.exception.AlreadyReservedException
@@ -17,7 +18,7 @@ class ControllerExceptionHandler {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
-    @ExceptionHandler(InvalidRequestException::class)
+    @ExceptionHandler(InvalidRequestException::class, HttpMessageNotReadableException::class)
     fun handleInvalidRequestException(exception: InvalidRequestException): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body(
