@@ -1,0 +1,10 @@
+POST localhost:8080/schedules
+Content-Type: application/json
+
+{
+  "name": "Test Schedule",
+  "roomId": 2,
+  "start_time": "2024-12-01T10:00:00",
+  "end_time": "2024-12-01T11:00:00",
+  "participants": [1,4]
+}
