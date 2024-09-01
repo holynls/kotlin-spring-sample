@@ -8,3 +8,18 @@ Content-Type: application/json
   "end_time": "2024-12-01T11:00:00",
   "participants": [1,4]
 }
+
+###
+GET localhost:8080/schedules/1
+
+###
+PUT localhost:8080/schedules/2
+Content-Type: application/json
+
+{
+  "name": "Test Schedule",
+  "roomId": 1,
+  "start_time": "2024-12-01T10:00:00",
+  "end_time": "2024-12-01T11:00:00",
+  "participants": [1,4]
+}

@@ -19,7 +19,7 @@ class ScheduleWriterRdbmsAdapter(
 
         val scheduleEntity = scheduleRepository.save(scheduleToBeSave)
 
-        val participantsToBeSave = schedule.participantIds.map {
+        val participantsToBeSave = schedule.participants.map {
             ScheduleParticipantEntity.of(it, scheduleEntity.id)
         }
 
@@ -31,7 +31,13 @@ class ScheduleWriterRdbmsAdapter(
             startTime = scheduleEntity.startTime,
             endTime = scheduleEntity.endTime,
             roomId = scheduleEntity.roomId,
-            participantIds = participantEntities.map { it.userId }
+            participants = participantEntities.map { it.userId }
         )
+    }
+
+    override fun delete(schedule: Schedule) {
+        // soft delete를 고려할 수 있음
+        scheduleRepository.deleteById(schedule.id)
+        scheduleParticipantRepository.deleteAllByScheduleId(schedule.id)
     }
 }

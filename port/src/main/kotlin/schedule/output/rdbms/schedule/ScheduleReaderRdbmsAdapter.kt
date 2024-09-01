@@ -1,7 +1,5 @@
 package schedule.output.rdbms.schedule
 
-import com.querydsl.core.types.Projections
-import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
@@ -35,7 +33,7 @@ class ScheduleReaderRdbmsAdapter(
             roomId = schedule.roomId,
             startTime = schedule.startTime,
             endTime = schedule.endTime,
-            participantIds = participantIds
+            participants = participantIds
         )
     }
 

@@ -6,4 +6,5 @@ import schedule.output.rdbms.schedule.entity.ScheduleParticipantEntity
 interface ParticipantRepository: JpaRepository<ScheduleParticipantEntity, Long> {
 
     fun findAllByScheduleId(scheduleId: Long): List<ScheduleParticipantEntity>
+    fun deleteAllByScheduleId(scheduleId: Long)
 }

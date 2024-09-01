@@ -20,7 +20,7 @@ data class UpdateScheduleResult(
                 startTime = schedule.startTime,
                 endTime = schedule.endTime,
                 roomId = schedule.roomId,
-                participants = schedule.participantIds
+                participants = schedule.participants
             )
         }
     }

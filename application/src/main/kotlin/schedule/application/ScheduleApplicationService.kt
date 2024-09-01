@@ -36,13 +36,7 @@ class ScheduleApplicationService(
 
         validateSchedule(startTime, endTime, roomId, participants)
 
-        val scheduleToBeSave = Schedule(
-            name = name,
-            startTime = startTime,
-            endTime = endTime,
-            roomId = roomId,
-            participantIds = participants
-        )
+        val scheduleToBeSave = command.toSchedule()
 
         val schedule = scheduleWriter.save(scheduleToBeSave)
 
@@ -57,10 +51,10 @@ class ScheduleApplicationService(
         val room = roomReader.findRoomByIdOrNull(schedule.roomId)
             ?: throw ResourceNotFoundException("해당 ID의 회의실이 존재하지 않습니다. roomId: ${schedule.roomId}")
 
-        val participants = userReader.findUsers(schedule.participantIds)
+        val participants = userReader.findUsers(schedule.participants)
 
-        if (participants.size != schedule.participantIds.size) {
-            val notFoundUserIds = schedule.participantIds - participants.map { it.id }.toSet()
+        if (participants.size != schedule.participants.size) {
+            val notFoundUserIds = schedule.participants - participants.map { it.id }.toSet()
             log.error("참가자 정보를 찾을 수 없음. notFoundUserIds: $notFoundUserIds")
             throw ResourceNotFoundException("참가자 정보를 찾을 수 없습니다. notFoundUserIds: $notFoundUserIds")
         }
@@ -75,15 +69,12 @@ class ScheduleApplicationService(
         val schedule = scheduleReader.findScheduleByIdOrNull(id)
             ?: throw ResourceNotFoundException("해당 ID의 예약이 존재하지 않습니다. id: $id")
 
+        // transacional을 사용하면 update를 위한 delete와 insert가 같은 트랜잭션으로 묶이기 때문에
+        scheduleWriter.delete(schedule)
+
         validateSchedule(startTime, endTime, roomId, participants)
 
-        val scheduleToBeUpdate = schedule.copy(
-            name = name,
-            startTime = startTime,
-            endTime = endTime,
-            roomId = roomId,
-            participantIds = participants
-        )
+        val scheduleToBeUpdate = command.toSchedule()
 
         val updatedSchedule = scheduleWriter.save(scheduleToBeUpdate)
 

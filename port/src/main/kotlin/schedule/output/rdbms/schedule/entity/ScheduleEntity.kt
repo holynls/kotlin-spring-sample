@@ -30,7 +30,7 @@ class ScheduleEntity(
         startTime = startTime,
         endTime = endTime,
         roomId = roomId,
-        participantIds = participants.map { it.userId }
+        participants = participants.map { it.userId }
     )
 
     companion object {

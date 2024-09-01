@@ -19,7 +19,7 @@ data class CreateScheduleResult(
             startTime = schedule.startTime,
             endTime = schedule.endTime,
             roomId = schedule.roomId,
-            participants = schedule.participantIds
+            participants = schedule.participants
         )
     }
 }

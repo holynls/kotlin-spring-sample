@@ -8,6 +8,5 @@ data class Schedule(
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
     val roomId: Long,
-    // roomId와의 위상을 맞추기 위해 이름을 participantIds로 변경
-    val participantIds: List<Long>
+    val participants: List<Long>
 )
