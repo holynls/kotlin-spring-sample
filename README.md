@@ -38,7 +38,7 @@ JAVA 17이 설치되어있어야 합니다.
 
 #### 이미지 빌드
 
-`./gradlew build port:jibDockerBuild` 명령어를 통해 도커 이미지를 빌드할 수 있습니다.
+`./gradlew build port:jibDockerBuild` 명령어를 통해 schedule 이라는 이름의 도커 이미지를 빌드할 수 있습니다.
 
 #### 컨테이너 실행
 
