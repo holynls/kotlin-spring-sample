@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  schedule:
+    image: data-rize/schedule
+    container_name: schedule
+    restart: always
+    ports:
+    - "8080:8080"

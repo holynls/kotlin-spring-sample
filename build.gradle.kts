@@ -33,12 +33,12 @@ allprojects {
 }
 
 
-java.sourceCompatibility = JavaVersion.VERSION_21
-java.targetCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_17
+java.targetCompatibility = JavaVersion.VERSION_17
 
 tasks.withType<KotlinJvmCompile>().configureEach {
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "17"
     }
 }
 
@@ -66,11 +66,11 @@ subprojects {
         }
 
         compileKotlin {
-            kotlinOptions.jvmTarget = "21"
+            kotlinOptions.jvmTarget = "17"
         }
 
         compileTestKotlin {
-            kotlinOptions.jvmTarget = "21"
+            kotlinOptions.jvmTarget = "17"
         }
 
         bootJar {

@@ -1,6 +1,7 @@
 pluginManagement {
     val kotlinVersion: String by settings
     val springBootVersion: String by settings
+    val jibPluginVersion: String by settings
     val springDependencyManagementVersion: String by settings
     val querydslPluginVersion: String by settings
 
@@ -21,6 +22,7 @@ pluginManagement {
         id("org.springframework.boot") version springBootVersion
         id("io.spring.dependency-management") version springDependencyManagementVersion
         id("com.ewerk.gradle.plugins.querydsl") version querydslPluginVersion
+        id("com.google.cloud.tools.jib") version jibPluginVersion
     }
 }
 
