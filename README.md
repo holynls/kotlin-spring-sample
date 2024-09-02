@@ -47,9 +47,9 @@ JAVA 17이 설치되어있어야 합니다.
 ---
 ### Test
 
-JAVA 17이 설치된 환경에서 `./gradlew port:test` 명령어를 통해 테스트를 실행할 수 있습니다.
+JAVA 17이 설치된 환경에서 `./gradlew test` 명령어를 통해 테스트를 실행할 수 있습니다.
 
 ---
 ### API Docs
 
-어플리케이션을 실행한 후 localhost:8080/docs 에서 API 문서를 확인할 수 있습니다.
+어플리케이션을 실행한 후 [Swagger Docs](http://localhost:8080/docs) 에서 API 문서를 확인할 수 있습니다.
