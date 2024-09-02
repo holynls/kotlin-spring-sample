@@ -185,8 +185,8 @@ class ScheduleControllerTest(
             val request = CreateScheduleRequest(
                 name = "회의",
                 roomId = 1,
-                startTime = "2099-12-01T10:00:00",
-                endTime = "2099-12-01T11:00:00",
+                startTime = "2099-11-01T10:00:00",
+                endTime = "2099-11-01T11:00:00",
                 participants = listOf(1, 2, 3)
             )
 
@@ -217,8 +217,8 @@ class ScheduleControllerTest(
             val request = CreateScheduleRequest(
                 name = "회의",
                 roomId = 1,
-                startTime = "2099-12-01T10:00:00",
-                endTime = "2099-12-01T11:00:00",
+                startTime = "2099-12-02T10:00:00",
+                endTime = "2099-12-02T11:00:00",
                 participants = listOf(1, 2, 3)
             )
 
@@ -233,8 +233,8 @@ class ScheduleControllerTest(
                     val updateRequest = UpdateScheduleRequest(
                         name = "회의 변경",
                         roomId = 1,
-                        startTime = "2099-12-01T10:30:00",
-                        endTime = "2099-12-01T11:30:00",
+                        startTime = "2099-12-02T10:30:00",
+                        endTime = "2099-12-02T11:30:00",
                         participants = listOf(1, 2, 3)
                     )
 
@@ -250,8 +250,8 @@ class ScheduleControllerTest(
             val request = CreateScheduleRequest(
                 name = "회의 2",
                 roomId = 2,
-                startTime = "2099-12-01T13:00:00",
-                endTime = "2099-12-01T14:00:00",
+                startTime = "2099-12-03T13:00:00",
+                endTime = "2099-12-03T14:00:00",
                 participants = listOf(4, 5, 6)
             )
 
@@ -266,8 +266,8 @@ class ScheduleControllerTest(
                     val request2 = CreateScheduleRequest(
                         name = "회의 3",
                         roomId = 2,
-                        startTime = "2099-12-01T15:00:00",
-                        endTime = "2099-12-01T16:00:00",
+                        startTime = "2099-12-03T15:00:00",
+                        endTime = "2099-12-03T16:00:00",
                         participants = listOf(7, 8, 9)
                     )
 
@@ -279,8 +279,8 @@ class ScheduleControllerTest(
                     val updateRequest = UpdateScheduleRequest(
                         name = "회의 2 변경",
                         roomId = 2,
-                        startTime = "2099-12-01T15:30:00",
-                        endTime = "2099-12-01T16:30:00",
+                        startTime = "2099-12-03T15:30:00",
+                        endTime = "2099-12-03T16:30:00",
                         participants = listOf(4, 5, 6)
                     )
 
@@ -296,8 +296,8 @@ class ScheduleControllerTest(
             val request = CreateScheduleRequest(
                 name = "회의 2",
                 roomId = 2,
-                startTime = "2099-12-01T13:00:00",
-                endTime = "2099-12-01T14:00:00",
+                startTime = "2099-12-04T13:00:00",
+                endTime = "2099-12-04T14:00:00",
                 participants = listOf(4, 5, 6)
             )
 
@@ -312,8 +312,8 @@ class ScheduleControllerTest(
                     val request2 = CreateScheduleRequest(
                         name = "회의 3",
                         roomId = 2,
-                        startTime = "2099-12-01T15:00:00",
-                        endTime = "2099-12-01T16:00:00",
+                        startTime = "2099-12-04T15:00:00",
+                        endTime = "2099-12-04T16:00:00",
                         participants = listOf(7, 8, 9)
                     )
 
@@ -325,8 +325,8 @@ class ScheduleControllerTest(
                     val updateRequest = UpdateScheduleRequest(
                         name = "회의 2 변경",
                         roomId = 3,
-                        startTime = "2099-12-01T15:30:00",
-                        endTime = "2099-12-01T16:30:00",
+                        startTime = "2099-12-04T15:30:00",
+                        endTime = "2099-12-04T16:30:00",
                         participants = listOf(7, 5, 6)
                     )
 
