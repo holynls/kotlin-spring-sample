@@ -29,7 +29,7 @@ tasks {
         }
 
         to {
-            image = "data-rize/schedule"
+            image = "schedule"
             tags = setOf("latest")
         }
 

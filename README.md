@@ -32,10 +32,22 @@ Hexagonal Architecture 를 적용하여 아래와 같은 subprojects 및 디렉�
 ---
 ### 실행
 
+JAVA 17이 설치되어있어야 합니다.
+
+맥 환경에서 sdkman을 통해 JAVA 17을 설치할 수 있도록 만들어둔 install_java_17_on_mac.sh를 실행하시면 자바 17이 설치됩니다.
+
+#### 이미지 빌드
+
+`./gradlew build port:jibDockerBuild` 명령어를 통해 도커 이미지를 빌드할 수 있습니다.
+
+#### 컨테이너 실행
+
+`docker-compose up -d` 명령어를 통해 컨테이너를 실행할 수 있습니다.
+
 ---
 ### Test
 
-JAVA 21이 설치된 환경에서 `./gradlew port:test` 명령어를 통해 테스트를 실행할 수 있습니다.
+JAVA 17이 설치된 환경에서 `./gradlew port:test` 명령어를 통해 테스트를 실행할 수 있습니다.
 
 ---
 ### API Docs

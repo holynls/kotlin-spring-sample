@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   schedule:
-    image: data-rize/schedule
+    image: schedule
     container_name: schedule
     restart: always
     ports:
